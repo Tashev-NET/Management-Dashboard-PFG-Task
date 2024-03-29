@@ -25,3 +25,49 @@ export const fetchPosts = async () => {
     return [];
   }
 };
+
+export const fetchAlbums = async () => {
+  try {
+    const response = await fetch("https://jsonplaceholder.typicode.com/albums");
+    if (!response.ok) {
+      throw new Error("Failed to fetch albums");
+    }
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error(error);
+    return [];
+  }
+};
+
+export const fetchUserPosts = async (userId: string) => {
+  try {
+    const response = await fetch(
+      `https://jsonplaceholder.typicode.com/posts?userId=${userId}`
+    );
+    if (!response.ok) {
+      throw new Error("Failed to fetch user posts");
+    }
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error(error);
+    return [];
+  }
+};
+
+export const fetchUserAlbums = async (userId: string) => {
+  try {
+    const response = await fetch(
+      `https://jsonplaceholder.typicode.com/albums?userId=${userId}`
+    );
+    if (!response.ok) {
+      throw new Error("Failed to fetch user albums");
+    }
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error(error);
+    return [];
+  }
+};
