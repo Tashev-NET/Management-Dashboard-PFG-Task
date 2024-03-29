@@ -10,3 +10,7 @@ export interface User {
     body: string;
     userId: number;
   }
+  export interface Album {
+    id: number;
+    title: string;
+  }
