@@ -1,6 +1,6 @@
 
 const Home = () => {
-  return <div>Welcome in your dashboard!!</div>;
+  return <div className="text-2xl font-bold my-4">Welcome in your dashboard!!</div>;
 };
 
 export default Home;
