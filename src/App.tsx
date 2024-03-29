@@ -6,6 +6,7 @@ import Home from "./screens/Home";
 import Sidebar from "./components/Sidebar";
 import UserAlbums from "./screens/UserAlbums";
 import UserPosts from "./screens/UserPosts";
+import PostComments from "./screens/PostComments";
 
 const App = () => {
   return (
@@ -20,6 +21,7 @@ const App = () => {
 
           <Route path="/albums" element={<Albums />} />
           <Route path="/posts" element={<Posts />} />
+          <Route path="/post/:id/comments" element={<PostComments />} />
         </Routes>
       </div>
     </Router>
