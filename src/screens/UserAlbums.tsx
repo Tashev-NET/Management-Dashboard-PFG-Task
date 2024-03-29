@@ -9,7 +9,7 @@ const UserAlbums: React.FC = () => {
   const { id } = useParams<{ id: string }>();
 
   useEffect(() => {
-    fetchUserAlbums(id).then((data) => setAlbums(data));
+    fetchUserAlbums(id ?? "").then((data) => setAlbums(data));
   }, [id]);
 
   return (

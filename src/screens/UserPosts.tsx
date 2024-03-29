@@ -9,7 +9,7 @@ const UserPosts: React.FC = () => {
   const { id } = useParams<{ id: string }>();
 
   useEffect(() => {
-    fetchUserPosts(id).then((data) => setPosts(data));
+    fetchUserPosts(id ?? "").then((data) => setPosts(data));
   }, [id]);
 
   return (
