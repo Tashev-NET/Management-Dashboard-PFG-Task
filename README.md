@@ -1,6 +1,6 @@
 # Management Dashboard - PFG-Task
 
-### Open Project - [https://management-dashboard-pfgTask.vercel.app/](https://management-dashboard-pfgTask.vercel.app/)
+### Open Project - [https://management-dashboard-pfg-task-app.vercel.app/](https://management-dashboard-pfg-task-app.vercel.app/)
 
 ## Available Scripts
 
