@@ -13,6 +13,7 @@ export interface Post {
 export interface Album {
   id: number;
   title: string;
+  userId: number;
 }
 
 export interface Comment {
