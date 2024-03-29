@@ -71,3 +71,18 @@ export const fetchUserAlbums = async (userId: string) => {
     return [];
   }
 };
+export const fetchPostComments = async (postId: string) => {
+  try {
+    const response = await fetch(
+      `https://jsonplaceholder.typicode.com/comments?postId=${postId}`
+    );
+    if (!response.ok) {
+      throw new Error("Failed to fetch post comments");
+    }
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error(error);
+    return [];
+  }
+};
