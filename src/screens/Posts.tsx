@@ -40,7 +40,7 @@ const Posts: React.FC = () => {
   return (
     <div className="container mx-auto" ref={containerRef}>
       <h1 className="text-2xl font-bold my-4">Posts</h1>
-      <div>
+      <div className="grid grid-cols-2 gap-4">
         {posts.map((post) => (
           <Link key={post.id} to={`/post/${post.id}/comments`}>
             <PostCard post={post} />
