@@ -19,6 +19,9 @@ const PostComments: React.FC = () => {
         Post Comments
         <button
           onClick={() => {
+            fetch(`https://jsonplaceholder.typicode.com/posts/${id}`, {
+              method: "DELETE",
+            });
             navigate(-1);
           }}
           className="text-red-600 hover:underline"
