@@ -23,9 +23,9 @@ const AlbumCard: React.FC<AlbumCardProps> = ({
       <div className="flex justify-between">
         <h2 className="text-xl font-semibold">{album.title}</h2>
         {isFavorite ? (
-          <Star fill="yellow" onClick={favoriteAlbum} />
+          <Star fill="yellow" onClick={unFavoriteAlbum} />
         ) : (
-          <Star color="black" onClick={unFavoriteAlbum} />
+          <Star color="black" onClick={favoriteAlbum} />
         )}
       </div>
       {/* <p className="text-gray-600">Author username: {userData?.username}</p> */}
