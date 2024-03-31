@@ -1,15 +1,9 @@
-import React, { useState, useEffect } from "react";
-import { fetchUsers } from "../api";
+import React from "react";
 import UserCard from "../components/UserCard";
-import { User } from "../Types";
+import { useAppContext } from "../contexts/AppContext";
 
 const Users: React.FC = () => {
-  const [users, setUsers] = useState<User[]>([]);
-
-  useEffect(() => {
-    fetchUsers().then((data) => setUsers(data));
-  }, []);
-
+  const { users } = useAppContext();
   return (
     <div className="container mx-auto">
       <h1 className="text-2xl font-bold my-4">Users</h1>
