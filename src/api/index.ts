@@ -14,9 +14,14 @@ export const fetchUsers = async () => {
   }
 };
 
-export const fetchPosts = async (page: number = 1, limit: number = 10): Promise<Post[]> => {
+export const fetchPosts = async (
+  page: number = 1,
+  limit: number = 10
+): Promise<Post[]> => {
   try {
-    const response = await fetch(`https://jsonplaceholder.typicode.com/posts?_page=${page}&_limit=${limit}`);
+    const response = await fetch(
+      `https://jsonplaceholder.typicode.com/posts?_page=${page}&_limit=${limit}`
+    );
     if (!response.ok) {
       throw new Error("Failed to fetch posts");
     }
@@ -80,21 +85,6 @@ export const fetchPostComments = async (postId: string) => {
     );
     if (!response.ok) {
       throw new Error("Failed to fetch post comments");
-    }
-    const data = await response.json();
-    return data;
-  } catch (error) {
-    console.error(error);
-    return [];
-  }
-};
-export const fetchPostUserData = async (userId: number) => {
-  try {
-    const response = await fetch(
-      `https://jsonplaceholder.typicode.com/users/${userId}`
-    );
-    if (!response.ok) {
-      throw new Error("Failed to fetch post user data");
     }
     const data = await response.json();
     return data;
