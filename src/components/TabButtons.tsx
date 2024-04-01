@@ -2,7 +2,7 @@ import React from "react";
 
 type TabButtonsProps = {
   buttons: string[];
-  singleButton: string;
+  singleButton?: string;
   selected: string;
   onClick: (text: string) => void;
 };
