@@ -3,7 +3,7 @@ import Users from "./screens/Users";
 import Albums from "./screens/Albums";
 import Posts from "./screens/Posts";
 import Home from "./screens/Home";
-import Sidebar from "./components/Sidebar";
+import Sidebar from "./components/Sidebar/Sidebar";
 import PostComments from "./screens/PostComments";
 import { AppProvider } from "./contexts/AppContext";
 import UserDetails from "./screens/UserDetails";
