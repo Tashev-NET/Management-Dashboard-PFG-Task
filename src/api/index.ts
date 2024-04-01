@@ -16,7 +16,7 @@ export const fetchUsers = async () => {
 
 export const fetchPosts = async (
   page: number = 1,
-  limit: number = 10
+  limit: number = 12
 ): Promise<Post[]> => {
   try {
     const response = await fetch(
