@@ -14,7 +14,7 @@ const PostComments: React.FC = () => {
   }, [id]);
 
   return (
-    <div className="container mx-auto">
+    <div className="container mx-auto px-4">
       <h1 className="text-2xl font-bold my-4 flex justify-between  items-center">
         Post Comments
         <button
@@ -29,7 +29,7 @@ const PostComments: React.FC = () => {
           Delete Post
         </button>
       </h1>
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 grid-rows-auto">
         {comments.map((comment) => (
           <CommentCard key={comment.id} comment={comment} />
         ))}
