@@ -1,38 +1,42 @@
 import { useState } from "react";
 import { useNavigate } from "react-router";
-import { Menu } from "lucide-react";
+import { Album, Library, Menu, Rss, Users } from "lucide-react";
 const Sidebar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
   return (
     <div className="w-[20%] pr-4">
       {window.innerWidth >= 768 && (
-        <ul className="flex flex-col items-center gap-15">
-          <li
-            className="cursor-pointer"
-            onClick={() => {
-              navigate("/users");
-            }}
-          >
-            users
-          </li>
-          <li
-            className="cursor-pointer"
-            onClick={() => {
-              navigate("/albums");
-            }}
-          >
-            albums
-          </li>
-          <li
-            className="cursor-pointer"
-            onClick={() => {
-              navigate("/posts");
-            }}
-          >
-            posts
-          </li>
-        </ul>
+        <div className="flex justify-center">
+          <ul className="flex flex-col gap-[15px] ">
+            <li
+              className="cursor-pointer flex gap-4"
+              onClick={() => {
+                navigate("/users");
+              }}
+            >
+              <Users /> <p>users</p>
+            </li>
+            <li
+              className="cursor-pointer flex gap-4"
+              onClick={() => {
+                navigate("/albums");
+              }}
+            >
+              <Library />
+              <p>albums</p>
+            </li>
+            <li
+              className="cursor-pointer flex gap-4"
+              onClick={() => {
+                navigate("/posts");
+              }}
+            >
+              <Rss />
+              <p>posts</p>
+            </li>
+          </ul>
+        </div>
       )}
       {window.innerWidth <= 768 && (
         <div>
@@ -45,32 +49,36 @@ const Sidebar = () => {
             <Menu />
           </div>{" "}
           {isOpen && (
-            <ul className="flex flex-col items-center gap-15">
+            <div className="flex justify-center">
+            <ul className="flex flex-col gap-[15px] ">
               <li
-                className="cursor-pointer"
+                className="cursor-pointer flex gap-4"
                 onClick={() => {
                   navigate("/users");
                 }}
               >
-                users
+                <Users /> <p>users</p>
               </li>
               <li
-                className="cursor-pointer"
+                className="cursor-pointer flex gap-4"
                 onClick={() => {
                   navigate("/albums");
                 }}
               >
-                albums
+                <Library />
+                <p>albums</p>
               </li>
               <li
-                className="cursor-pointer"
+                className="cursor-pointer flex gap-4"
                 onClick={() => {
                   navigate("/posts");
                 }}
               >
-                posts
+                <Rss />
+                <p>posts</p>
               </li>
             </ul>
+          </div>
           )}
         </div>
       )}
