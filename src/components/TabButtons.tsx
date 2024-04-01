@@ -1,6 +1,12 @@
 import React from "react";
 
-const TabButtons:React.FC = ({
+type TabButtonsProps = {
+  buttons: string[];
+  singleButton: string;
+  selected: string;
+  onClick: (text: string) => void;
+};
+const TabButtons: React.FC<TabButtonsProps> = ({
   buttons,
   singleButton,
   selected,
@@ -22,7 +28,7 @@ const TabButtons:React.FC = ({
         </div>
       ) : (
         <div className="flex border border-gray-300 rounded-md w-full">
-          {buttons?.map((text, i) => (
+          {buttons?.map((text:string, i:number) => (
             <button
               key={i}
               className={`flex-1 px-6 py-2 focus:outline-none ${
@@ -44,4 +50,3 @@ const TabButtons:React.FC = ({
 };
 
 export default TabButtons;
-
