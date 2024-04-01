@@ -1,4 +1,4 @@
-import { Post } from "../Types";
+import { Album, Post } from "../Types";
 
 export const fetchUsers = async () => {
   try {
@@ -33,14 +33,19 @@ export const fetchPosts = async (
   }
 };
 
-export const fetchAlbums = async () => {
+export const fetchAlbums = async (
+  page: number = 1,
+  limit: number = 30
+): Promise<Album[]> => {
   try {
-    const response = await fetch("https://jsonplaceholder.typicode.com/albums");
+    const response = await fetch(
+      `https://jsonplaceholder.typicode.com/albums?_page=${page}&_limit=${limit}`
+    );
     if (!response.ok) {
       throw new Error("Failed to fetch albums");
     }
     const data = await response.json();
-    return data;
+    return data as Album[];
   } catch (error) {
     console.error(error);
     return [];
