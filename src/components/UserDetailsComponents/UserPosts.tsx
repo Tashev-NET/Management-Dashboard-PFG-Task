@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Post } from "../../Types";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { fetchUserPosts } from "../../api";
 import PostCard from "../PostCard";
 
@@ -15,7 +15,9 @@ const UserPosts = () => {
   return (
     <div className="grid grid-cols-2 gap-4 mt-5">
       {posts.splice(5).map((post) => (
-        <PostCard key={post.id} post={post} />
+        <Link key={post.id} to={`/post/${post.id}/comments`}>
+          <PostCard key={post.id} post={post} />
+        </Link>
       ))}
     </div>
   );
