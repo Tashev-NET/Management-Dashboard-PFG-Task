@@ -40,7 +40,10 @@ const Albums: React.FC = () => {
       loader={<div>Loading...</div>}
     >
       <div className="container mx-auto px-4">
-        <h1 className="text-2xl font-bold my-4">Albums</h1>
+        <div className="flex justify-between">
+          <h1 className="text-2xl font-bold my-4">Albums</h1>
+          <p className=" text-black">Page size: {albums.length}</p>
+        </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 grid-rows-auto">
           {albums.map((album) => (
             <AlbumCard

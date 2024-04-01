@@ -36,7 +36,10 @@ const Posts: React.FC = () => {
       loader={<div>Loading...</div>}
     >
       <div className="container mx-auto px-4">
-        <h1 className="text-2xl font-bold my-4">Posts</h1>
+        <div className="flex justify-between">
+          <h1 className="text-2xl font-bold my-4">Posts</h1>
+          <p className=" text-black">Page size: {posts.length}</p>
+        </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 grid-rows-auto">
           {posts.map((post) => (
             <Link key={post.id} to={`/post/${post.id}/comments`}>
