@@ -1,54 +1,51 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import { fetchPosts } from "../api";
 import { Post } from "../Types";
 import PostCard from "../components/PostCard";
 import { Link } from "react-router-dom";
+import InfiniteScroll from "react-infinite-scroll-component";
 
 const Posts: React.FC = () => {
   const [posts, setPosts] = useState<Post[]>([]);
-  const [page, setPage] = useState<number>(1);
-  const [loading, setLoading] = useState<boolean>(false);
-  const containerRef = useRef<HTMLDivElement>(null);
+  const [hasMore, setHasMore] = useState(true);
+  const [page, setPage] = useState(2);
 
   useEffect(() => {
-    setLoading(true);
+    fetchPosts(page)
+      .then((posts) => {
+        setPosts(posts);
+      })
+      .catch((error) => console.error("Error fetching posts:", error));
+  }, []);
+
+  const fetchMoreData = () => {
     fetchPosts(page)
       .then((newPosts) => {
         setPosts((prevPosts) => [...prevPosts, ...newPosts]);
-        setLoading(false);
+        newPosts.length > 0 ? setHasMore(true) : setHasMore(false);
       })
-      .catch((error) => {
-        console.error("Error fetching posts:", error);
-        setLoading(false);
-      });
-  }, [page]);
+      .catch((error) => console.error("Error fetching more posts:", error));
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const { scrollTop, clientHeight, scrollHeight } =
-        document.documentElement;
-      if (scrollTop + clientHeight >= scrollHeight - 20) {
-        setPage((prev) => prev + 1);
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
+    setPage((prevPage) => prevPage + 1);
+  };
   return (
-    <div className="container mx-auto" ref={containerRef}>
-      <h1 className="text-2xl font-bold my-4">Posts</h1>
-      <div className="grid grid-cols-2 gap-4">
-        {posts.map((post) => (
-          <Link key={post.id} to={`/post/${post.id}/comments`}>
-            <PostCard post={post} />
-          </Link>
-        ))}
-        {loading && <div>Loading...</div>}
+    <InfiniteScroll
+      dataLength={posts.length}
+      next={fetchMoreData}
+      hasMore={hasMore}
+      loader={<div>Loading...</div>}
+    >
+      <div className="container mx-auto">
+        <h1 className="text-2xl font-bold my-4">Posts</h1>
+        <div className="grid grid-cols-2 gap-4">
+          {posts.map((post) => (
+            <Link key={post.id} to={`/post/${post.id}/comments`}>
+              <PostCard post={post} />
+            </Link>
+          ))}
+        </div>
       </div>
-    </div>
+    </InfiniteScroll>
   );
 };
 
