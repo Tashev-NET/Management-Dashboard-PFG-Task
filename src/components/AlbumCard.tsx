@@ -1,6 +1,7 @@
-import React from "react";
-import { Album } from "../Types";
+import React, { useEffect, useState } from "react";
+import { Album, User } from "../Types";
 import { Star } from "lucide-react";
+import { useAppContext } from "../contexts/AppContext";
 interface AlbumCardProps {
   album: Album;
   isFavorite: boolean;
@@ -12,12 +13,20 @@ const AlbumCard: React.FC<AlbumCardProps> = ({
   isFavorite,
   setFavoriteAlbums,
 }) => {
+  const [userData, setUserData] = useState<User>();
+  const { users } = useAppContext();
+  useEffect(() => {
+    const data = users.find((user) => user.id === album.userId);
+    setUserData(data);
+  }, []);
+
   const favoriteAlbum = () => {
     setFavoriteAlbums((prev) => [...prev, album.id]);
   };
   const unFavoriteAlbum = () => {
     setFavoriteAlbums((prev) => prev.filter((el) => el !== album.id));
   };
+
   return (
     <div className="bg-white shadow-md p-4 rounded-md">
       <div className="flex justify-between">
@@ -28,7 +37,7 @@ const AlbumCard: React.FC<AlbumCardProps> = ({
           <Star color="black" onClick={favoriteAlbum} />
         )}
       </div>
-      {/* <p className="text-gray-600">Author username: {userData?.username}</p> */}
+      <p className="text-gray-600">Author username: {userData?.username}</p>
     </div>
   );
 };
