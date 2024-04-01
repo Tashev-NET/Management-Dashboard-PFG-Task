@@ -18,7 +18,7 @@ const UserAlbums = () => {
 
   return (
     <div className="grid grid-cols-2 gap-4 mt-5">
-      {albums.splice(5).map((album) => (
+      {albums.slice(0, 5).map((album) => (
         <AlbumCard
           key={album.id}
           album={album}
