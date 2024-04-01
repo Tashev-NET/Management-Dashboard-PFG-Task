@@ -1,6 +1,5 @@
 import React from "react";
 import { User } from "../Types";
-import { Link } from "react-router-dom";
 
 type UserCardProps = {
   user: User;
