@@ -38,7 +38,7 @@ const Sidebar = () => {
             onClick={() => {
               setIsOpen((prev) => !prev);
             }}
-            className="flex justify-end cursor-pointer"
+            className="flex justify-end cursor-pointer mb-4"
           >
             {isOpen ? <X /> : <Menu />}
           </div>{" "}
