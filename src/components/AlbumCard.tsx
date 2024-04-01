@@ -28,7 +28,7 @@ const AlbumCard: React.FC<AlbumCardProps> = ({
   };
 
   return (
-    <div className="bg-white shadow-md p-4 rounded-md">
+    <div className="bg-white shadow-md p-4 rounded-md h-full">
       <div className="flex justify-between">
         <h2 className="text-xl font-semibold">{album.title}</h2>
         {isFavorite ? (
