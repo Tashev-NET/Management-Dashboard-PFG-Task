@@ -19,7 +19,7 @@ const Posts: React.FC = () => {
   }, []);
 
   const fetchMoreData = () => {
-    fetchPosts(page)
+    fetchPosts(page + 1)
       .then((newPosts) => {
         setPosts((prevPosts) => [...prevPosts, ...newPosts]);
         newPosts.length > 0 ? setHasMore(true) : setHasMore(false);

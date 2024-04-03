@@ -8,7 +8,7 @@ import InfiniteScroll from "react-infinite-scroll-component";
 const Albums: React.FC = () => {
   const [albums, setAlbums] = useState<Album[]>([]);
   const [hasMore, setHasMore] = useState(true);
-  const [page, setPage] = useState(2);
+  const [page, setPage] = useState(1);
   const [favoriteAlbums, setFavoriteAlbums] = useLocalStorage<number[]>(
     "favoriteAlbums",
     []
@@ -22,7 +22,7 @@ const Albums: React.FC = () => {
   }, []);
 
   const fetchMoreData = () => {
-    fetchAlbums(page)
+    fetchAlbums(page + 1)
       .then((newAlbums) => {
         setAlbums((prevAlbums) => [...prevAlbums, ...newAlbums]);
         newAlbums.length > 0 ? setHasMore(true) : setHasMore(false);
